@@ -1,0 +1,196 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: relative;
+    width: 100%;
+  }
+  
+  /* Thiết lập cho ảnh trong header */
+  header img {
+    width: 100%; /* Ảnh chiếm toàn bộ chiều ngang */
+    height: auto;
+  }
+  
+  /* Nút Đăng nhập */
+  .login {
+    position: absolute;
+    top: 50%; /* Đặt nút vào giữa theo chiều dọc */
+    right: 50px; /* Khoảng cách từ bên phải */
+    transform: translateY(-50%); /* Đảm bảo nút ở giữa hoàn hảo */
+    color: black;
+    font-size: 26px;
+    text-decoration: none;
+    font-family: 'Paytone One', sans-serif;
+  }
+
+  
+  
+  .login:hover {
+    color: #444;
+  }
+  
+  .login-icon {
+    font-size: 40px;
+    color: #111;
+    text-decoration: none;
+  }
+
+
+.product-page {
+    max-width: 1350px;
+    margin: 10px auto;
+    padding: 10px;
+}
+
+.back-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.back-link span {
+    font-size: 30px;
+    margin-right: 10px;
+    color: #111;
+}
+
+.back-link:hover {
+    color: #007bff;
+}
+
+.product-details {
+    display: flex;
+    gap: 20px;
+}
+
+.product-image img {
+    height: 400px;
+    width: 400px;
+    object-fit: cover;
+    border-radius: 5px; /* Tùy chỉnh, nếu muốn bo góc */
+}
+
+.image-thumbnails {
+    display: flex;
+    gap:30px;
+    margin-top: 10px;
+}
+
+.image-thumbnails img {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.product-info {
+    flex: 2;
+}
+
+.product-info h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 20px;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.options span {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.colors, .sizes {
+    margin-bottom: 20px;
+}
+
+.options button {
+    padding: 10px 15px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f8f8f8;
+}
+
+.options button:hover {
+    background-color: #e9ecef;
+}
+
+.options button.selected {
+    background-color: #82b5ec;
+    color: #fff;
+    border-color: #769ecc;
+}
+
+.quantity {
+    margin-bottom: 20px;
+}
+
+.quantity-btn {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+}
+
+input[type="number"] {
+    width: 50px;
+    text-align: center;
+}
+
+.actions {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.add-to-cart {
+    display: flex;
+    align-items: center;  /* Căn giữa theo chiều dọc */
+    justify-content: center;  /* Căn giữa theo chiều ngang */
+    background-color: #78b2e1;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    gap: 10px;  /* Khoảng cách đều giữa biểu tượng và chữ */
+}
+
+.add-to-cart .material-icons {
+    font-size: 22px;  /* Điều chỉnh kích thước biểu tượng cho phù hợp với chữ */
+    line-height: 1;   /* Đảm bảo căn chỉnh theo chiều dọc */
+}
+
+.add-to-cart:hover {
+    background-color: #cceece;
+    color: #000;
+}
+
+.review-link {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.nameSP {
+    width: 500px;
+    padding: 10px;
+    border-radius: 1px;
+    color: #000000;
+    background-color: rgb(235, 191, 156);
+    cursor: pointer;
+}
