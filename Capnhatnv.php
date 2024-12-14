@@ -28,7 +28,7 @@
     <div class="main-content">
         <div class="header">
             <h1>Quản lý nhân viên</h1>
-            <button id="updateBtn">Cập nhật</button>
+            <button class="Btn" id="updateBtn">Cập nhật</button>
         </div>
         <div class="employee-list">
             <?php
