@@ -28,13 +28,13 @@ $result = $conn->query($sql);
 	  <title>Sowh Fashion</title>
 	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	  <link href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap" rel="stylesheet">
-	  <link rel="stylesheet" href="baocaodoanhthus.css">
+	  <link rel="stylesheet" href="baocaodoanhthu.css">
 	</head>
 	<body>
 
 	<!-- Hiển thị thanh header -->
 		<header>
-			<a href="trangchu.php">
+			<a href="trangchunhanvien.php">
 				<img src="img/logo2.png" alt="Sowh Fashion Logo">
 			</a>
 
@@ -51,10 +51,9 @@ $result = $conn->query($sql);
 						<li class="dropdown">
 							<a href="" class="login" ><span class="material-icons" style="font-size: 40px; color: #111;">menu</span> </a>
 							<div class="dropdown-content">
-								<a href="">Quản lý kho hàng</a>
-								<a href="">Xem đơn hàng</a>
-								<a href="">Xem lịch sử đơn hàng</a>
-								<a href="">Doanh thu</a>
+								<a href="qlkhohang.php">Quản lý kho hàng</a>
+								<a href="lsdonhang.php">Xem đơn hàng</a>
+								<a href="baocaodoanhthu.php">Doanh thu</a>
 							</div>
 						</li>
 					</section>
