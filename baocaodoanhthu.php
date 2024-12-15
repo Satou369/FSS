@@ -53,7 +53,7 @@ $result = $conn->query($sql);
 							<div class="dropdown-content">
 								<a href="qlkhohang.php">Quản lý kho hàng</a>
 								<a href="lsdonhang.php">Xem đơn hàng</a>
-								<a href="baocaodoanhthu.php">Doanh thu</a>
+								<a href="baocaodoanh.php">Doanh thu</a>
 							</div>
 						</li>
 					</section>
