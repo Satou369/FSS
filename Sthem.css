@@ -1,0 +1,177 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 95vh;
+    background: url(image/bg.png) no-repeat;
+    background-size: cover;
+}
+
+.menu {
+    width: 250px;
+    background-color: #f0e4d7;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.profile {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 80px;
+}
+
+.profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.profile h2 {
+    font-size: 18px;
+    margin: 10px 0 0;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.menu ul li {
+    margin: 20px 0;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    align-items: center;
+}
+
+.menu ul li a img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.logout {
+    margin-top: auto;
+}
+
+.logout a {
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    align-items: center;
+}
+
+.logout a img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.main-content { 
+    height: 95%;
+    flex-grow: 1; 
+    padding: 20px; 
+    background-color: #fff; 
+    overflow-y: auto; 
+    display: flex; 
+    flex-direction: column; 
+    border: 2px solid #ddd; /* Thêm border */
+    padding: 10px; /* Thêm padding nếu cần */
+    margin: 20px 20px 10px 20px ;
+    border-radius: 5px; /* Nếu muốn các góc tròn */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+	position: sticky;  /* Cố định trong phạm vi của phần tử chứa */
+    top: 0;            /* Đảm bảo header dính vào phần trên cùng của .main-content */
+    z-index: 1;        /* Đảm bảo header luôn nằm trên các phần tử khác trong main-content */
+    padding: 0px 20px; /* Thêm padding cho header */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Thêm bóng cho header */
+}
+
+.header h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.header  {
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.employee-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.employee {
+    display: flex;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: black;
+}
+.icon{
+    padding: 0 0 0 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.icon i {
+
+    font-size: 80px; /* Thay đổi kích thước của biểu tượng */
+}
+.info {
+    flex-grow: 1;
+}
+
+.info p {
+    margin: 5px 0;
+    padding: 0 0 0 50px ;
+}
+
+.edit i {
+    display: flex;
+    align-items: normal;
+}
+input {
+    
+    background: transparent;  /* Ẩn nền */
+    outline: none;  /* Ẩn khi trường được chọn */
+    font-size: 15px;
+}
+.dt1 {
+
+    height: 1px;
+    width:100%;
+    background-color: black;
+}
+input:disabled {
+	border: none;   /* Ẩn đường viền */
+	color:black;
+    cursor: not-allowed; /* Hiển thị con trỏ không cho phép */
+	font-size: 15px;
+}
+
+.Btn{
+	background-color: #a7d878;
+	border-radius: 5px;
+}
