@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$updates[] = "CCCD='$cccd'";
 		}
 		if (!empty($birthYear)) {
-			$updates[] = "Namsinh='$birthYear'";
+			$updates[] = "NamSinh='$birthYear'";
 		}
 		if (!empty($phone)) {
 			$updates[] = "SDT='$phone'";
