@@ -64,7 +64,7 @@
                     <p>Năm sinh: <input type="text" class="Namsinh" value="<?php echo $Namsinh; ?>" data-manv="<?php echo $MaNV; ?>" disabled></p>
                     <p>Số điện thoại: <input type="text" class="SDT" value="<?php echo $SDT; ?>" data-manv="<?php echo $MaNV; ?>" disabled></p>
                     <p>Email: <input type="text" class="email" value="<?php echo $email; ?>" data-manv="<?php echo $MaNV; ?>" disabled></p>
-                    <div class="error-message" style="color:red;"></div> <!-- Thêm phần tử hiển thị lỗi -->
+                    <div class="error-message" style="color:red;"></div>
                 </div>
                 <div class="edit">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -157,7 +157,7 @@
                         errorMessage.text('Cập nhật nhân viên không thành công. Vui lòng nhập đúng dữ liệu');
                         isValid = false;
                         totalErrors++;
-                        return; // Dừng kiểm tra nhân viên này và tiếp tục với nhân viên khác
+                        return; 
                     }
 
                     // Nếu tất cả các kiểm tra đều hợp lệ, xóa thông báo lỗi
