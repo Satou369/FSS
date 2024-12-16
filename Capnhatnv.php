@@ -181,7 +181,7 @@
                 }
 
                 $.ajax({
-                    url: 'update_employee.php',
+                    url: 'updatenv.php',
                     method: 'POST',
                     data: { employees: JSON.stringify(updatedData) },
                     success: function(response) {
