@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý nhân viên</title>
-    <link rel="stylesheet" href="Styles.css">
+    <link rel="stylesheet" href="Scapnhat.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> 
 </head>
@@ -15,14 +15,14 @@
             <h2>Quản trị viên</h2>
         </div>
         <br>
-        <div class ="dt1"></div>
+        <div class="dt1"></div>
         <ul class="menu">
-            <li><a href="#"><img src="home.png" alt="Home">  Trang chủ</a></li>
-            <li><a href="#"><img src="employee.png" alt="Employee"> QL. Nhân viên</a></li>
-            <li><a href="#"><img src="product.png" alt="Product"> QL. Sản phẩm</a></li>
+            <li><a href="trangchu.php"><i class="fa fa-home" aria-hidden="true"></i>  Trang chủ</a></li>
+            <li><a href="trangchu.php"><i class="fa fa-plus" aria-hidden="true"></i> QL. Nhân viên</a></li>
+            <li><a href="#"><i class="fa fa-plus" aria-hidden="true"></i> QL. Sản phẩm</a></li>
         </ul>
         <div class="logout">
-            <a href="#"><img src="logout.png" alt="Logout"> Thoát</a>
+            <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Thoát</a>
         </div>
     </div>
     <div class="main-content">
@@ -64,6 +64,7 @@
                     <p>Năm sinh: <input type="text" class="Namsinh" value="<?php echo $Namsinh; ?>" data-manv="<?php echo $MaNV; ?>" disabled></p>
                     <p>Số điện thoại: <input type="text" class="SDT" value="<?php echo $SDT; ?>" data-manv="<?php echo $MaNV; ?>" disabled></p>
                     <p>Email: <input type="text" class="email" value="<?php echo $email; ?>" data-manv="<?php echo $MaNV; ?>" disabled></p>
+                    <div class="error-message" style="color:red;"></div> <!-- Thêm phần tử hiển thị lỗi -->
                 </div>
                 <div class="edit">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -71,42 +72,113 @@
             </div>
             <?php
                     }
-					echo '<input type="text" class="name" value="' . htmlspecialchars($name) . '" data-MaNV="' . htmlspecialchars($MaNV) . '">';
-
                 }
                 $conn->close();
             ?>
         </div>
     </div>
-    
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#updateBtn').click(function() {
                 var updatedData = [];
+                var isValid = true;
+                var totalErrors = 0;
 
-                $('.employee .info input').each(function() {
-    var manv = $(this).data('manv'); // Lấy MaNV từ trường 'name'
+                $('.employee').each(function() {
+                    var manv = $(this).find('.name').data('manv'); // Lấy MaNV từ trường 'data-manv'
+                    var name = $(this).find('.name').val().trim();
+                    var gender = $(this).find('.gt').val().trim();
+                    var cccd = $(this).find('.CCCD').val().trim();
+                    var birthYear = $(this).find('.Namsinh').val().trim();
+                    var phone = $(this).find('.SDT').val().trim();
+                    var email = $(this).find('.email').val().trim();
+                    var errorMessage = $(this).find('.error-message');
+                    var errorCount = 0;
 
-                    var name = $(this).hasClass('name') ? $(this).val() : '';
-                    var gender = $(this).hasClass('gt') ? $(this).val() : '';
-                    var cccd = $(this).hasClass('CCCD') ? $(this).val() : '';
-                    var birthYear = $(this).hasClass('Namsinh') ? $(this).val() : '';
-                    var phone = $(this).hasClass('SDT') ? $(this).val() : '';
-                    var email = $(this).hasClass('email') ? $(this).val() : '';
-                    if (name || gender || cccd || birthYear || phone || email) {
-                        updatedData.push({
-                            MaNV: manv,
-                            name: name,
-                            gender: gender,
-                            cccd: cccd,
-                            birthYear: birthYear,
-                            phone: phone,
-                            email: email
-							
-                        });
-}
+                    // Kiểm tra các trường thông tin có bị bỏ trống không
+                    if (!name || !gender || !cccd || !birthYear || !phone || !email) {
+                        errorMessage.text('Vui lòng nhập đầy đủ thông tin');
+                        isValid = false;
+                        errorCount++;
+                    }
+
+                    // Kiểm tra định dạng email
+                    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        errorMessage.text('Vui lòng nhập email đúng định dạng');
+                        isValid = false;
+                        errorCount++;
+                    }
+
+                    // Kiểm tra định dạng số điện thoại và căn cước công dân
+                    var phoneAndCccdRegex = /^[0-9]+$/;
+                    if (!phoneAndCccdRegex.test(phone) || !phoneAndCccdRegex.test(cccd)) {
+                        errorMessage.text('Vui lòng nhập số điện thoại và căn cước công dân đúng định dạng');
+                        isValid = false;
+                        errorCount++;
+                    }
+
+					// Kiểm tra số điện thoại
+					if (!phoneAndCccdRegex.test(phone) || phone.length !== 10) {
+						errorMessage.text('Tạo tài khoản nhân viên không thành công. Số điện thoại phải có 10 số.');
+						isValid = false;
+						errorCount++;
+					}
+
+					// Kiểm tra số căn cước công dân
+					if (!phoneAndCccdRegex.test(cccd) || cccd.length !== 12) {
+						errorMessage.text('Tạo tài khoản nhân viên không thành công. Số căn cước phải có 12 số.');
+						isValid = false;
+						errorCount++;
+					}
+
+
+                    // Kiểm tra định dạng ngày tháng năm sinh
+                    var birthYearRegex = /^(\d{2})-(\d{2})-(\d{4})$/;
+                    if (!birthYearRegex.test(birthYear)) {
+                        errorMessage.text('Vui lòng nhập ngày tháng năm sinh đúng định dạng');
+                        isValid = false;
+                        errorCount++;
+                    } else {
+                        var today = new Date();
+                        var parts = birthYear.split('-');
+                        var birthDateObj = new Date(parts[2], parts[1] - 1, parts[0]); // yyyy, mm (0-based), dd
+                        if (birthDateObj > today) {
+                            errorMessage.text('Kiểm tra lại ngày sinh');
+                            isValid = false;
+                            errorCount++;
+                        }
+                    }
+
+                    // Kiểm tra tổng số lỗi
+                    if (errorCount >= 2) {
+                        errorMessage.text('Cập nhật nhân viên không thành công. Vui lòng nhập đúng dữ liệu');
+                        isValid = false;
+                        totalErrors++;
+                        return; // Dừng kiểm tra nhân viên này và tiếp tục với nhân viên khác
+                    }
+
+                    // Nếu tất cả các kiểm tra đều hợp lệ, xóa thông báo lỗi
+                    if (errorCount === 0) {
+                        errorMessage.text('');
+                    }
+
+                    updatedData.push({
+                        MaNV: manv,
+                        name: name,
+                        gender: gender,
+                        cccd: cccd,
+                        birthYear: birthYear,
+                        phone: phone,
+                        email: email
+                    });
                 });
+
+                if (!isValid) {
+                    return false;
+                }
 
                 $.ajax({
                     url: 'update_employee.php',
@@ -122,7 +194,7 @@
             });
         });
     </script>
-	<script>
+ 	<script>
         // Lấy tất cả các phần tử có class 'edit'
 		const editButtons = document.querySelectorAll('.edit i');
 
