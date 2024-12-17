@@ -7,39 +7,90 @@ body{
     position: relative;
 }
 
-header {
-    position: relative;
-    width: 100%;
+header{
+	height: 155px;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	background: url(img/header.png) no-repeat;
+	background-position: 50% 21.4%;
+	background-size: cover;
 }
-  
-/* Thiết lập cho ảnh trong header */
-header img {
-    width: 100%; /* Ảnh chiếm toàn bộ chiều ngang */
-    height: auto;
+		
+header img{
+	width: 290px; 
+	height: 120px;
+	margin: 18px 20px 20px 12px ;
+	padding: 10px;
 }
-  
+
+header div.header{
+	display: flex;
+	flex-direction: column;
+	width: 290px; 
+	height: 100%;
+	padding: 20px 10px ;
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+header section{
+	display: flex;
+	padding: 10px 10px ; 
+}
+	
 /* Nút Đăng nhập */
 .login {
-    position: absolute;
-    top: 50%; /* Đặt nút vào giữa theo chiều dọc */
-    right: 50px; /* Khoảng cách từ bên phải */
-    transform: translateY(-50%); /* Đảm bảo nút ở giữa*/
-    color: black;
-    font-size: 26px;
-    text-decoration: none;
-    font-family: 'Paytone One', sans-serif;
+    margin: 0 auto;
+	color: black;
+	font-size: 26px;
+	text-decoration: none;
+	font-family: 'Paytone One', sans-serif;
 }
-  
+
 .login:hover {
-    color: #444;
+  color: #444;
 }
-  
+
 .login-icon {
-    font-size: 40px;
-    color: #111;
-    text-decoration: none;
+  font-size: 40px;
+  color: #111;
+  text-decoration: none;
 }
-  
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+	margin: auto;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+	right: 0;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+
+.dropdown-content a:hover {
+	background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
 /* Cải thiện phần container cho poster và thông tin sản phẩm */
 .container {
     display: flex;

@@ -1,4 +1,7 @@
 <?php
+
+session_start(); // Bắt đầu session để kiểm tra đăng nhập
+
 // Kết nối tới cơ sở dữ liệu MySQL
 $conn = new mysqli('localhost', 'root', '', 'fss');
 
@@ -101,13 +104,39 @@ $conn->close();
     <link rel="stylesheet" href="style.css">
 </head>
 <header>
-    <a href="trangchu.php">
-      <img src="img/logo.png" alt="Sowh Fashion Logo">
-    </a>
-    <!-- Nút Đăng nhập -->
-    <a href="login.php" class="login" style="top: 35px; right: 110px;"><span class="material-icons" style="font-size: 40px; color: #111;">account_circle</span></a><br>
-    <a href="login.php" class="login"><b>Đăng nhập</b></a>
-</header>
+			<a href="trangchunhanvien.php">
+				<img src="img/logo2.png" alt="Sowh Fashion Logo">
+			</a>
+
+			<?php if (isset($_SESSION['username'])): ?>
+				<!-- Hiển thị tên đăng nhập nếu đã đăng nhập -->
+				<div class="header">
+					<section>
+						<a href="" class="login" style="top: 35px; left: 1300px;" ><b><?php echo htmlspecialchars($_SESSION['username']); ?></b></a>
+						<a href="logout.php" class="login" style="top: 35px; right: 30px;" ><span class="material-icons" 
+							style="font-size: 40px; color: #111;" >logout </span></a>
+					</section>
+					<section>
+						<a href="" class="login" style="top: 100px; left: 1300px;">Khác</a>
+						<li class="dropdown">
+							<a href="" class="login" ><span class="material-icons" style="font-size: 40px; color: #111;">menu</span> </a>
+							<div class="dropdown-content">
+								<a href="qlkhohang.php">Quản lý kho hàng</a>
+								<a href="lsdonhang.php">Xem đơn hàng</a>
+								<a href="baocaodoanhthu.php">Doanh thu</a>
+							</div>
+						</li>
+					</section>
+				</div>
+			<?php else: ?>
+				<!-- Hiển thị nút Đăng nhập nếu chưa đăng nhập -->
+				<div class="header">
+					<a href="login.php" class="login"><span class="material-icons" 
+						style="font-size: 40px; color: #111;" >account_circle</span></a><br>
+					<a href="login.php" class="login"><b>Đăng nhập</b></a>
+				</div>
+			<?php endif; ?>
+		</header>
     <div class="title">
         <div class="arrow"><a href="trangchunhanvien.php"><img src="img/arrow.jpg" alt="Back"></a></div>
         <div class="add"><b>Thêm sản phẩm</b></div>
