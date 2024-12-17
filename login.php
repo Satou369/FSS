@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
 
                 // Chuyển hướng dựa trên loại người dùng
                 if ($user['loai'] == 'nv') {
-                    header('Location: trangchuNV.php');
+                    header('Location: trangchunhanvien.php');
                 } elseif ($user['loai'] == 'qtv') {
                     header('Location: trangchuQTV.php');
                 } else {
