@@ -102,14 +102,14 @@ $conn->close();
 </head>
 <header>
     <a href="trangchu.php">
-      <img src="logo.png" alt="Sowh Fashion Logo">
+      <img src="img/logo.png" alt="Sowh Fashion Logo">
     </a>
     <!-- Nút Đăng nhập -->
     <a href="login.php" class="login" style="top: 35px; right: 110px;"><span class="material-icons" style="font-size: 40px; color: #111;">account_circle</span></a><br>
     <a href="login.php" class="login"><b>Đăng nhập</b></a>
 </header>
     <div class="title">
-        <div class="arrow"><a href="trangchunhanvien.php"><img src="arrow.jpg" alt="Back"></a></div>
+        <div class="arrow"><a href="trangchunhanvien.php"><img src="img/arrow.jpg" alt="Back"></a></div>
         <div class="add"><b>Thêm sản phẩm</b></div>
     </div>
     <div class="AddProductForm">
@@ -124,11 +124,11 @@ $conn->close();
                     <div class="Up">
                         <div>
                             <input type="file" id="photo" name="photo[]" accept="image/*" multiple style="display:none" onchange="previewFiles(event, 'image')">
-                            <button type="button" class="photo" onclick="document.getElementById('photo').click();"><img src="camera.jpg" alt="Upload Photo"></button>
+                            <button type="button" class="photo" onclick="document.getElementById('photo').click();"><img src="img/camera.jpg" alt="Upload Photo"></button>
                         </div>
                         <div>
                             <input type="file" id="video" name="video" accept="video/*" style="display:none" onchange="previewFiles(event, 'video')">
-                            <button type="button" class="video" onclick="document.getElementById('video').click();"><img src="camcorder.jpg" alt="Upload Video"></button>
+                            <button type="button" class="video" onclick="document.getElementById('video').click();"><img src="img/camcorder.jpg" alt="Upload Video"></button>
                         </div>
                     </div>
                     <div id="image-preview" style="margin-top: 5px;"></div> <!-- Div để hiển thị ảnh -->
