@@ -1,18 +1,46 @@
 <?php
 session_start(); // Bắt đầu session để kiểm tra đăng nhập
-?>
-<?php
-$servername = "localhost"; // Địa chỉ máy chủ
-$username = "root"; // Tên người dùng
-$password = ""; // Mật khẩu
-$dbname = "fss"; // Tên cơ sở dữ liệu của bạn
 
 // Kết nối với cơ sở dữ liệu
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli('localhost', 'root', '', 'fss2');
 
 // Kiểm tra kết nối
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
+}
+
+// Kiểm tra yêu cầu xóa sản phẩm
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
+    if ($_POST['action'] === 'delete' && isset($_POST['maSP'])) {
+        $maSP = $_POST['maSP'];
+
+        // Xóa sản phẩm khỏi bảng hinh
+        $cau_lenh = "DELETE FROM hinh WHERE MaSP = '$maSP'";
+        $conn->query($cau_lenh);
+        // Xóa sản phẩm khỏi bảng SanPham
+        $sql = "DELETE FROM SanPham WHERE MaSP = '$maSP'";
+        if ($conn->query($sql) === TRUE) {
+            echo "Sản phẩm đã được xóa thành công!";
+        } else {
+            echo "Lỗi khi xóa sản phẩm: " . $conn->error;
+        }
+        exit;
+    } elseif ($_POST['action'] === 'getRandomProduct' && isset($_POST['displayedProducts'])) {
+        $displayedProducts = json_decode($_POST['displayedProducts'], true);
+        $displayedProductsList = implode("','", $displayedProducts);
+
+        // Lấy sản phẩm ngẫu nhiên chưa hiển thị
+        $sql = "SELECT * FROM SanPham WHERE MaSP NOT IN ('$displayedProductsList') ORDER BY RAND() LIMIT 1";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $randomProduct = $result->fetch_assoc();
+            echo json_encode($randomProduct);
+        } else {
+            echo json_encode([]);
+        }
+        exit; // Kết thúc script sau khi xử lý yêu cầu lấy sản phẩm ngẫu nhiên
+    }
 }
 
 // Lấy các giá trị lọc và tìm kiếm từ người dùng nếu có
@@ -63,12 +91,16 @@ $result = $conn->query($sql);
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="trangchunhanvien.css">
+<style>
+    #editButton.clicked {
+    background-color: #FFD700; /* Màu vàng */
+    }
+</style>
 </head>
 <body>
-
 <!-- Hiển thị thanh header -->
 <header>
-    <a href="trangchunhanvien.php">
+    <a href="trangchu.php">
         <img src="img/logo2.png" alt="Sowh Fashion Logo">
     </a>
 
@@ -85,16 +117,17 @@ $result = $conn->query($sql);
 				<li class="dropdown">
 					<a href="" class="login" ><span class="material-icons" style="font-size: 40px; color: #111;">menu</span> </a>
 					<div class="dropdown-content">
-						<a href="qlkhohang.php">Quản lý kho hàng</a>
-						<a href="lsdonhang.php">Xem đơn hàng</a>
-						<a href="baocaodoanhthu.php">Doanh thu</a>
+						<a href="">Quản lý kho hàng</a>
+						<a href="">Xem đơn hàng</a>
+						<a href="">Xem lịch sử đơn hàng</a>
+						<a href="">Doanh thu</a>
 					</div>
 				</li>
 			</section>
 		</div>
     <?php else: ?>
 		<!-- Hiển thị nút Đăng nhập nếu chưa đăng nhập -->
-		<div class="header">
+		<div>
 			<a href="login.php" class="login"><span class="material-icons" 
 				style="font-size: 40px; color: #111;" >account_circle</span></a><br>
 			<a href="login.php" class="login"><b>Đăng nhập</b></a>
@@ -163,34 +196,32 @@ $result = $conn->query($sql);
       <br>
       <div>
 		<img src="img/dexuat.png" alt="Đề xuất" width="200px" style="margin-right: 650px">
-		<button type="button" href="">Xóa</button>
-		<button type="button" href="">Sửa</button>
-		<button type="button" href="">+</button>
+		<button type="button" onclick="showDeleteButtons()">Xóa</button>
+		<button type="button" id="editButton" onclick="enableEditMode()">Sửa</button>
+		<button type="button" onclick="window.location.href='AddProduct.php'">+</button>
 		<br><br>
       </div>
       <div class="product-container">
-        <?php
-        if ($result->num_rows > 0) {
-            $counter = 0;
-            while($row = $result->fetch_assoc()) {
-                if ($counter % 4 == 0 && $counter != 0) {
-                    echo '</div><div class="product-container">'; // Kết thúc hàng và tạo hàng mới sau 4 sản phẩm
-                }
-                echo '<div class="product-item">';
-                echo '<img src="' . $row["img"] . '" alt="Product ' . $row["MaSP"] . '">';
-                echo '<div class="product-info">';
-                echo '<p class="product-name">' . $row["TenSP"] . '</p>';
-                echo '<p class="product-price">đ' . number_format($row["Gia"], 0, ',', '.') ;
-                echo '</div>';
-                echo '</div>';
-                $counter++;
+    <?php
+    if ($result->num_rows > 0) {
+        $counter = 0;
+        while ($row = $result->fetch_assoc()) {
+            if ($counter % 4 == 0 && $counter != 0) {
+                echo '</div><div class="product-container">'; // Kết thúc hàng và tạo hàng mới sau 4 sản phẩm
             }
-        } else {
-            echo "Không có sản phẩm";
+            echo '<div class="product-item" data-masp="' . $row["MaSP"] . '" onclick="selectProduct(\'' . $row["MaSP"] . '\')">';
+            echo '<img src="' . $row["img"] . '" alt="Product ' . $row["MaSP"] . '">';
+            echo '<div class="product-info">';
+            echo '<p class="product-name">' . $row["TenSP"] . '</p>';
+            echo '<p class="product-price">đ' . number_format($row["Gia"], 0, ',', '.') . '</p>';
+            echo '</div>';
+            echo '<button class="delete-button" onclick="deleteProduct(\'' . $row["MaSP"] . '\', event)">X</button>'; // Thêm nút "Xóa"
+            echo '</div>';
+            $counter++;
         }
-        ?>
-      </div>
-  </div>
+    }
+    ?>
+</div>
 </div>
 
 <script>
@@ -203,7 +234,113 @@ $result = $conn->query($sql);
   function searchProduct() {
     document.getElementById('filterForm').submit(); // Gửi form khi bấm nút "Tìm kiếm"
   }
-</script>
 
+let selectedProduct = null;
+let isEditMode = false;
+
+function enableEditMode() {
+    isEditMode = true;
+    document.getElementById('editButton').classList.add('clicked'); // Thêm class để đổi màu nút "Sửa"
+}
+
+function selectProduct(maSP) {
+    if (isEditMode) {
+        selectedProduct = maSP; // Lưu mã sản phẩm vào biến tạm thời
+        editProduct();
+    }
+}
+
+function editProduct() {
+    if (selectedProduct) {
+        // Thêm mã sản phẩm vào URL
+        window.location.href = 'EditProduct.php?selectedProduct=' + selectedProduct;
+    }
+}
+
+function showDeleteButtons() {
+    var deleteButtons = document.querySelectorAll('.delete-button');
+    deleteButtons.forEach(function(button) {
+        button.style.display = 'block'; // Hiển thị nút "Xóa"
+    });
+}
+
+function hideDeleteButtons() {
+    var deleteButtons = document.querySelectorAll('.delete-button');
+    deleteButtons.forEach(function(button) {
+        button.style.display = 'none'; // Ẩn nút "Xóa"
+    });
+}
+
+function deleteProduct(maSP, event) {
+    event.stopPropagation(); // Ngăn chặn sự kiện `onclick` của sản phẩm
+    if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')) {
+        // Gửi yêu cầu xóa sản phẩm đến server
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '', true); // Gửi yêu cầu đến trang hiện tại
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                alert('Xóa sản phẩm thành công!');
+                // Xóa phần tử sản phẩm khỏi DOM
+                var productItem = document.querySelector('.product-item[data-masp="' + maSP + '"]');
+                if (productItem) {
+                    productItem.remove();
+                }
+                // Tịnh tiến các sản phẩm còn lại
+                var productContainer = document.querySelector('.product-container');
+                var remainingProducts = Array.from(productContainer.querySelectorAll('.product-item'));
+                remainingProducts.forEach(function(item, index) {
+                    item.style.order = index; // Sắp xếp lại thứ tự các sản phẩm
+                });
+                // Thêm sản phẩm ngẫu nhiên không trùng vào vị trí cuối cùng
+                addRandomProduct();
+                // Ẩn các nút "X" còn lại
+                hideDeleteButtons();
+            }
+        };
+        xhr.send('action=delete&maSP=' + maSP);
+    } else {
+        hideDeleteButtons(); // Ẩn nút "Xóa" nếu người dùng chọn "Hủy"
+    }
+}
+
+function addRandomProduct() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '', true); // Gửi yêu cầu lấy sản phẩm ngẫu nhiên không trùng
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            var randomProduct = JSON.parse(xhr.responseText);
+            var productContainer = document.querySelector('.product-container');
+            var newProductItem = document.createElement('div');
+            newProductItem.classList.add('product-item');
+            newProductItem.setAttribute('data-masp', randomProduct.MaSP);
+            newProductItem.innerHTML = `
+                <img src="${randomProduct.img}" alt="Product ${randomProduct.MaSP}">
+                <div class="product-info">
+                    <p class="product-name">${randomProduct.TenSP}</p>
+                    <p class="product-price">đ${randomProduct.Gia.toLocaleString()}</p>
+                </div>
+                <button class="delete-button" onclick="deleteProduct('${randomProduct.MaSP}', event)">X</button>
+            `;
+            productContainer.appendChild(newProductItem);
+            // Đảm bảo hiển thị 4 sản phẩm mỗi hàng
+            var productItems = Array.from(productContainer.querySelectorAll('.product-item'));
+            productItems.forEach(function(item, index) {
+                item.style.order = index; // Sắp xếp lại thứ tự các sản phẩm
+            });
+        }
+    };
+    // Lấy danh sách các mã sản phẩm đã hiển thị
+    var displayedProducts = Array.from(document.querySelectorAll('.product-item')).map(function(item) {
+        return item.getAttribute('data-masp');
+    });
+    xhr.send('action=getRandomProduct&displayedProducts=' + JSON.stringify(displayedProducts));
+}
+
+function formatPrice(price) {
+    return price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }).replace('₫', '');
+}
+</script>
 </body>
 </html>

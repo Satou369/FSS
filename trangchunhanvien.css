@@ -236,3 +236,19 @@ button:hover {
   font-size: 20px; /* Kích thước biểu tượng */
   color: #888; /* Màu sắc biểu tượng */
 }
+.product-item {
+    position: relative; /* Đảm bảo nút "X" nằm trong sản phẩm */
+}
+
+.delete-button {
+  position: absolute;
+  top: 3px; /* Sát viền trên */
+  right: 3px; /* Sát viền phải */
+  background-color: rgba(0, 0, 0, 0.7); /* Nền đen nhạt */
+  color: white; /* Màu trắng */
+  border: none;
+  border-radius: 3px; /* Góc tròn nhỏ cho nút */
+  cursor: pointer;
+  padding: 2px 5px; /* Kích thước nhỏ hơn */
+  display: none;
+}
