@@ -100,40 +100,39 @@ $result = $conn->query($sql);
 <body>
 <!-- Hiển thị thanh header -->
 <header>
-    <a href="trangchu.php">
-        <img src="img/logo2.png" alt="Sowh Fashion Logo">
-    </a>
+			<a href="trangchunhanvien.php">
+				<img src="img/logo2.png" alt="Sowh Fashion Logo">
+			</a>
 
-    <?php if (isset($_SESSION['username'])): ?>
-        <!-- Hiển thị tên đăng nhập nếu đã đăng nhập -->
-		<div class="header">
-			<section>
-				<a href="" class="login" style="top: 35px; left: 1300px;" ><b><?php echo htmlspecialchars($_SESSION['username']); ?></b></a>
-				<a href="logout.php" class="login" style="top: 35px; right: 30px;" ><span class="material-icons" 
-					style="font-size: 40px; color: #111;" >logout </span></a>
-			</section>
-			<section>
-				<a href="" class="login" style="top: 100px; left: 1300px;">Khác</a>
-				<li class="dropdown">
-					<a href="" class="login" ><span class="material-icons" style="font-size: 40px; color: #111;">menu</span> </a>
-					<div class="dropdown-content">
-						<a href="">Quản lý kho hàng</a>
-						<a href="">Xem đơn hàng</a>
-						<a href="">Xem lịch sử đơn hàng</a>
-						<a href="">Doanh thu</a>
-					</div>
-				</li>
-			</section>
-		</div>
-    <?php else: ?>
-		<!-- Hiển thị nút Đăng nhập nếu chưa đăng nhập -->
-		<div>
-			<a href="login.php" class="login"><span class="material-icons" 
-				style="font-size: 40px; color: #111;" >account_circle</span></a><br>
-			<a href="login.php" class="login"><b>Đăng nhập</b></a>
-		</div>
-    <?php endif; ?>
-</header>
+			<?php if (isset($_SESSION['username'])): ?>
+				<!-- Hiển thị tên đăng nhập nếu đã đăng nhập -->
+				<div class="header">
+					<section>
+						<a href="" class="login" style="top: 35px; left: 1300px;" ><b><?php echo htmlspecialchars($_SESSION['username']); ?></b></a>
+						<a href="logout.php" class="login" style="top: 35px; right: 30px;" ><span class="material-icons" 
+							style="font-size: 40px; color: #111;" >logout </span></a>
+					</section>
+					<section>
+						<a href="" class="login" style="top: 100px; left: 1300px;">Khác</a>
+						<li class="dropdown">
+							<a href="" class="login" ><span class="material-icons" style="font-size: 40px; color: #111;">menu</span> </a>
+							<div class="dropdown-content">
+								<a href="qlkhohang.php">Quản lý kho hàng</a>
+								<a href="lsdonhang.php">Xem đơn hàng</a>
+								<a href="baocaodoanhthu.php">Doanh thu</a>
+							</div>
+						</li>
+					</section>
+				</div>
+			<?php else: ?>
+				<!-- Hiển thị nút Đăng nhập nếu chưa đăng nhập -->
+				<div class="header">
+					<a href="login.php" class="login"><span class="material-icons" 
+						style="font-size: 40px; color: #111;" >account_circle</span></a><br>
+					<a href="login.php" class="login"><b>Đăng nhập</b></a>
+				</div>
+			<?php endif; ?>
+		</header>
 
 <div class="container">
   <!-- Phần bên trái (poster) -->
@@ -212,7 +211,7 @@ $result = $conn->query($sql);
             echo '<div class="product-item" data-masp="' . $row["MaSP"] . '" onclick="selectProduct(\'' . $row["MaSP"] . '\')">';
             echo '<img src="' . $row["img"] . '" alt="Product ' . $row["MaSP"] . '">';
             echo '<div class="product-info">';
-            echo '<p class="product-name">' . $row["TenSP"] . '</p>';
+            echo '<a href="chitietSP.php?id=' . $row["MaSP"] . '"> <p class="product-name">' . $row["TenSP"] . '</p></a>';
             echo '<p class="product-price">đ' . number_format($row["Gia"], 0, ',', '.') . '</p>';
             echo '</div>';
             echo '<button class="delete-button" onclick="deleteProduct(\'' . $row["MaSP"] . '\', event)">X</button>'; // Thêm nút "Xóa"
