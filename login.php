@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <img src="bg.png" width="100%" height="60%">
+    <img src="img/bg.png" width="100%" height="60%">
     <div class="LoginForm">
         <div class="Login">Đăng nhập</div>
         <div>
