@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    padding-bottom: 50px; /* Để tránh nội dung bị footer che khuất */
+    font-family: Arial, sans-serif;
+  }
+  
+  
+  header{
+      height: 155px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      background: url(img/header.png) no-repeat;
+      background-position: 50% 21.4%;
+      background-size: cover;
+  }
+          
+  header img{
+      width: 290px; 
+      height: 120px;
+      margin: 18px 20px 20px 12px ;
+      padding: 10px;
+  }
+  
+  header div.header{
+      display: flex;
+      flex-direction: column;
+      width: 290px; 
+      height: 100%;
+      padding: 20px 10px ;
+      background-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  header section{
+      display: flex;
+      padding: 10px 10px ; 
+  }
+      
+  /* Nút Đăng nhập */
+  .login {
+      margin: 0 auto;
+      color: black;
+      font-size: 26px;
+      text-decoration: none;
+      font-family: 'Paytone One', sans-serif;
+  }
+  
+  .login:hover {
+    color: #444;
+  }
+  
+  .login-icon {
+    font-size: 40px;
+    color: #111;
+    text-decoration: none;
+  }
+  
+  .back-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.back-link span {
+    font-size: 30px;
+    margin-right: 10px;
+    color: #111;
+}
+
+.back-link:hover {
+    color: #656666;
+}
+
+
+  /* Phần container nội dung chính */
+  .container {
+    flex: 1; /* Chiếm toàn bộ không gian trống */
+    width: 95%;
+    margin: 20px auto;
+    background-color: rgb(255, 254, 254);
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  /* Bảng giỏ hàng */
+  .giohang-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .giohang-table th, .giohang-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .giohang-table img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
