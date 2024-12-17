@@ -196,7 +196,7 @@ $result = $conn->query($sql);
       <div>
 		<img src="img/dexuat.png" alt="Đề xuất" width="200px" style="margin-right: 650px">
 		<button type="button" onclick="showDeleteButtons()">Xóa</button>
-		<button type="button" id="editButton" onclick="window.location.href='EditProduct.php'">Sửa</button>
+		<button type="button" id="editButton" onclick="enableEditMode()">Sửa</button>
 		<button type="button" onclick="window.location.href='AddProduct.php'">+</button>
 		<br><br>
       </div>
