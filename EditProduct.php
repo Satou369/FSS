@@ -5,7 +5,7 @@ if (isset($_GET['selectedProduct'])) {
     $maSP = $_GET['selectedProduct'];
 
     // Kết nối tới cơ sở dữ liệu MySQL
-    $conn = new mysqli('localhost', 'root', '', 'fss2');
+    $conn = new mysqli('localhost', 'root', '', 'fss');
 
     // Kiểm tra kết nối
     if ($conn->connect_error) {
