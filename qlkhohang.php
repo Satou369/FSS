@@ -90,13 +90,20 @@ $result = $conn->query($sql);
 					<?php
 					if ($result->num_rows > 0) {
 						while($row = $result->fetch_assoc()) {
+							 $sizes = array();
+								if ($row['S'] == 1) $sizes[] = 'S';
+								if ($row['L'] == 1) $sizes[] = 'L';
+								if ($row['XL'] == 1) $sizes[] = 'XL';
+								if ($row['XXL'] == 1) $sizes[] = 'XXL';
+								
+								$sizeString = implode(', ', $sizes);
 							echo'
 							<tr>
 								<td>'. $row["TenSP"] .'</td>
 								<td><img src="' . $row["img"] . '" alt="Product ' . $row["MaSP"] . '"></td>
 								<td>'. $row["MoTa"] .'</td>
 								<td>'. $row["Gia"] .'</td>
-								<td>'. $row["Co"] .'</td>
+								<td>'. $sizeString .'</td>
 								<td>'. $row["SLDaBan"] .'</td>
 								<td>'. $row["SLConLai"] .'</td>
 							</tr>';
