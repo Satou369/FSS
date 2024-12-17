@@ -129,8 +129,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])) {
 				</div>
 			<?php endif; ?>
 		</header>
+<?php if (isset($_SESSION['loai'] ) && $_SESSION['loai'] == "nv" ){?>
+<a href="trangchunhanvien.php" class="back-link"> <span class="material-icons" 
+    style="font-size: 40px; color: #111;" >narrow_back </span>Quay về trang chủ</a>
+<?php } else { ?>	
+
 <a href="trangchu.php" class="back-link"> <span class="material-icons" 
     style="font-size: 40px; color: #111;" >narrow_back </span>Quay về trang chủ</a>
+<?php }?>	
 <div class="product-page">
     
     <div class="product-details">
