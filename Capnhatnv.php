@@ -122,14 +122,14 @@
 
 					// Kiểm tra số điện thoại
 					if (!phoneAndCccdRegex.test(phone) || phone.length !== 10) {
-						errorMessage.text('Tạo tài khoản nhân viên không thành công. Số điện thoại phải có 10 số.');
+						errorMessage.text('Số điện thoại phải có 10 số.');
 						isValid = false;
 						errorCount++;
 					}
 
 					// Kiểm tra số căn cước công dân
 					if (!phoneAndCccdRegex.test(cccd) || cccd.length !== 12) {
-						errorMessage.text('Tạo tài khoản nhân viên không thành công. Số căn cước phải có 12 số.');
+						errorMessage.text('Số căn cước phải có 12 số.');
 						isValid = false;
 						errorCount++;
 					}

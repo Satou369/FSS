@@ -66,53 +66,53 @@
 
 			// Kiểm tra không để trống các trường bắt buộc
 			if (!MaNV || !MatKhau || !name || !gender || !cccd || !birthDate || !phone || !email) {
-				errors.push("Tạo tài khoản nhân viên không thành công. Vui lòng nhập đầy đủ thông tin.");
+				errors.push("Vui lòng nhập đầy đủ thông tin.");
 			}
 
 			// Kiểm tra định dạng email
 			var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 			if (!emailPattern.test(email)) {
-				errors.push("Tạo tài khoản nhân viên không thành công. Vui lòng nhập email đúng định dạng.");
+				errors.push("Vui lòng nhập email đúng định dạng.");
 			}
 
 			// Kiểm tra định dạng số điện thoại và căn cước công dân (chỉ chứa ký tự số)
 			var numberPattern = /^[0-9]+$/;
 			if (!numberPattern.test(phone)) {
-				errors.push("Tạo tài khoản nhân viên không thành công. Vui lòng nhập số điện thoại đúng định dạng.");
+				errors.push("Vui lòng nhập số điện thoại đúng định dạng.");
 			}
 			if (!numberPattern.test(cccd)) {
-				errors.push("Tạo tài khoản nhân viên không thành công. Vui lòng nhập căn cước công dân đúng định dạng.");
+				errors.push("Vui lòng nhập căn cước công dân đúng định dạng.");
 			}
 			
 			// Kiểm tra định dạng số điện thoại và căn cước công dân (chỉ chứa ký tự số)
 
 			// Kiểm tra số điện thoại
 			if (!numberPattern.test(phone) || phone.length !== 10) {
-				errors.push("Tạo tài khoản nhân viên không thành công. Số điện thoại phải có 10 số.");
+				errors.push("Số điện thoại phải có 10 số.");
 			}
 
 			// Kiểm tra số căn cước công dân
 			if (!numberPattern.test(cccd) || cccd.length !== 12) {
-				errors.push("Tạo tài khoản nhân viên không thành công. Số căn cước phải có 12 số.");
+				errors.push("Số căn cước phải có 12 số.");
 			}
 
 
 			// Kiểm tra định dạng ngày tháng năm sinh (chỉ chứa ký tự số)
 			var datePattern = /^(\d{2})-(\d{2})-(\d{4})$/;
 			if (!datePattern.test(birthDate)) {
-				errors.push("Tạo tài khoản nhân viên không thành công. Vui lòng nhập ngày tháng năm sinh đúng định dạng (dd-mm-yyyy).");
+				errors.push(" Vui lòng nhập ngày tháng năm sinh đúng định dạng (dd-mm-yyyy).");
 			} else {
 				var today = new Date();
 				var parts = birthDate.split('-');
 				var birthDateObj = new Date(parts[2], parts[1] - 1, parts[0]); // yyyy, mm (0-based), dd
 				if (birthDateObj > today) {
-					errors.push("Kiểm tra lại ngày sinh");
+					errors.push("Kiểm tra lại ngày tháng năm sinh");
 				}
 			}
 
 			// Kiểm tra độ dài mật khẩu
 			if (MatKhau.length < 6) {
-				errors.push("Tạo tài khoản nhân viên không thành công. Mật khẩu có ít hơn 6 kí tự.");
+				errors.push("Mật khẩu có ít hơn 6 kí tự.");
 			}
 
 			// Kiểm tra nếu tên tài khoản, CCCD hoặc số điện thoại đã tồn tại (giả sử kiểm tra qua AJAX)
@@ -127,10 +127,10 @@
 				success: function(response) {
 					response = JSON.parse(response);
 					if (response.MaNV_exists) {
-						errors.push("Tạo tài khoản nhân viên không thành công. Tên tài khoản đã tồn tại trong hệ thống.");
+						errors.push("Tên tài khoản đã tồn tại trong hệ thống.");
 					}
 					if (response.cccd_exists) {
-						errors.push("Tạo tài khoản nhân viên không thành công. CCCD đã tồn tại trong hệ thống.");
+						errors.push("CCCD đã tồn tại trong hệ thống.");
 					}
 				}
 			});
