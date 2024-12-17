@@ -1,0 +1,515 @@
+html{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    margin: 0;
+    position: relative;
+}
+
+header{
+	height: 155px;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	background: url(img/header.png) no-repeat;
+	background-position: 50% 21.4%;
+	background-size: cover;
+}
+		
+header img{
+	width: 290px; 
+	height: 120px;
+	margin: 18px 20px 20px 12px ;
+	padding: 10px;
+}
+
+header div.header{
+	display: flex;
+	flex-direction: column;
+	width: 290px; 
+	height: 100%;
+	padding: 20px 10px ;
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+header section{
+	display: flex;
+	padding: 10px 10px ; 
+}
+	
+/* Nút Đăng nhập */
+.login {
+    margin: 0 auto;
+	color: black;
+	font-size: 26px;
+	text-decoration: none;
+	font-family: 'Paytone One', sans-serif;
+}
+
+.login:hover {
+  color: #444;
+}
+
+.login-icon {
+  font-size: 40px;
+  color: #111;
+  text-decoration: none;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+	margin: auto;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+	right: 0;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+
+.dropdown-content a:hover {
+	background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+/* Cải thiện phần container cho poster và thông tin sản phẩm */
+.container {
+    display: flex;
+    height: calc(100vh - 80px); /* Chiếm toàn bộ chiều cao còn lại sau header */
+}
+
+input{
+    width: 80%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+    transition: all 0.3s ease; /* hiệu ứng chuyển động khi đổi màu */
+}
+
+input:focus{
+    border-color: #8c7b6d; /* màu của viền khi click vào input hoặc đang nhập dữ liệu */
+    outline: none; /* xoá viền mặc định của trình duyệt khi focus */
+}
+
+.SignupForm{
+    background-color: #fff;
+    border: 1px solid black;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin-left: 60%;
+    width: 30%;
+    height: 50%;
+    margin-top: -50%;
+    position: relative;
+    z-index: 1;
+}
+
+.Signup{
+    text-align: center;
+    font-size: 250%;
+    padding-bottom: 25px;
+    padding-top: 25px;
+}
+
+.signupElement{
+    padding-left: 35px;
+}
+
+.signupButton{
+    margin: 5% 3% 5% 63%;
+    background-color: transparent;
+    text-align: center;
+}
+
+.signupButton button[type="submit"]{
+    background-color: #9e9081;
+    color: #fff;
+    border-radius: 0 10px 0 10px;
+    border: none;
+    cursor: pointer;
+    padding: 17px 20px;
+    font-size: 120%;
+}
+
+.signupButton button[type="submit"]:hover {
+    background-color: #8c7b6d; /* Màu khi rê chuột lên nút Đăng ký */
+}
+
+#form-error{
+    margin-left: 10%;
+    color: red;
+}
+
+.LoginForm{
+    background-color: #fff;
+    border: 1px solid black;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin-left: 60%;
+    width: 30%;
+    height: 50%;
+    margin-top: -50%;
+    position: relative;
+    z-index: 1;
+}
+
+.Login{
+    text-align: center;
+    font-size: 250%;
+    padding-bottom: 25px;
+    padding-top: 25px;
+}
+
+.LoginElement{
+    padding-left: 35px;
+}
+
+.LoginButton{
+    margin: 5% 3% 5% 63%;
+    background-color: transparent;
+    text-align: center;
+}
+
+.LoginButton button[type="submit"]{
+    background-color: #9e9081;
+    color: #fff;
+    border-radius: 0 10px 0 10px;
+    border: none;
+    cursor: pointer;
+    padding: 12px 15px;
+    font-size: 110%;
+}
+
+.LoginButton button[type="submit"]:hover {
+    background-color: #8c7b6d; /* Màu khi rê chuột lên nút*/
+}
+
+.LoginElement a{
+    text-decoration: none;
+    color: #8c7b6d;
+    font-size: 87.5%;
+    margin-bottom: 25px;
+}
+
+.LinkSignup{
+    margin: 25px 0 25px 20px;
+}
+
+.LinkSignup a{
+    color: #8c7b6d;
+}
+
+#login-error{
+    margin-left: 10%;
+    color: red;
+    margin-top: 10px;
+}
+
+.arrow img{
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 30px;
+    height: auto;
+}
+
+.ForgotPasswordForm{
+    background-color: #fff;
+    border: 1px solid black;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin-left: 60%;
+    width: 30%;
+    height: 50%;
+    margin-top: -50%;
+    position: relative;
+    z-index: 1;
+}
+
+.ForgotPassword{
+    text-align: center;
+    font-size: 250%;
+    padding-bottom: 25px;
+    padding-top: 15px;
+}
+
+.ForgotPasswordElement{
+    padding-left: 35px;
+}
+
+.ForgotPasswordButton{
+    margin: 5% 3% 5% 63%;
+    background-color: transparent;
+    text-align: center;
+}
+
+.ForgotPasswordButton button[type="submit"]{
+    background-color: #9e9081;
+    color: #fff;
+    border-radius: 0 10px 0 10px;
+    border: none;
+    cursor: pointer;
+    padding: 12px 15px;
+    font-size: 120%;
+}
+
+.ForgotPasswordButton button[type="submit"]:hover {
+    background-color: #8c7b6d; /* Màu khi rê chuột lên nút */
+}
+
+#ForgotPassword-error{
+    margin-left: 10%;
+    color: red;
+}
+
+.LabelForgotPassword{
+    text-align: center;
+    margin: 0 15px 35px 15px;
+}
+
+.resendOTP button{
+    margin-left: 20px;
+    border: none;
+    padding-bottom: 15px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 100%;
+}
+
+.ForgotPassword3-error{
+    color: red;
+    margin-left: 25px;
+    margin-bottom: 20px;
+}
+
+.title{
+    display: flex;
+    margin-left: 25px;
+}
+
+.left{
+    float: left;
+    width: 42%;
+}
+
+.add{
+    font-size: 115%;
+    margin: 15px 0 0 15px;
+}
+
+.Nameproduct{
+    display: flex;
+    margin-top: 10px;
+    margin-left: 80px;
+}
+
+.input_nameproduct input{
+    outline: none;
+    border: none;
+    width: 500%;
+}
+
+.input_nameproduct{
+    margin-top: -12px;
+}
+
+.UpPhotoLabel{
+    margin-left: 50px;
+}
+
+.photo {
+    margin-top: 15px;
+    margin-left: 50px;
+    border-radius: 10px;
+    border: 1px dashed black;
+    background-color: white;
+    cursor: pointer;
+}
+
+.photo img {
+    width: 60px;
+    height: auto;
+    padding: 20px 45px;
+}
+
+.Up{
+    display: flex;
+}
+
+.video{
+    margin-top: 15px;
+    margin-left: 25px;
+    border-radius: 10px;
+    border: 1px dashed black;
+    background-color: white;
+    cursor: pointer;
+}
+
+.video img{
+    width: 60px;
+    height: auto;
+    padding: 20px 45px;
+}
+
+.UpColor{
+    display: flex;
+    margin: 30px 0 10px 50px;
+}
+
+.LabelColor{
+    margin-top: 15px;
+}
+
+.plus{
+    border-radius: 3px;
+    border: 1px dashed black;
+    background-color: white;
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 8px 12px;
+    font-size: 115%;
+}
+
+.UpQuantity{
+    display: flex;
+    margin: 30px 0 0 50px;
+}
+
+.input_quantity{
+    margin-top: -12px;
+}
+
+.input_quantity input{
+    outline: none;
+    border: none;
+    width: 150%;
+}
+
+.UpPrice{
+    display: flex;
+    margin: 0 0 0 50px;
+}
+
+.input_price{
+    margin-top: -12px;
+}
+
+.input_price input{
+    outline: none;
+    border: none;
+    width: 150%;
+}
+
+.UpDescription{
+    margin: 10px 0 0 0;
+}
+
+.input_description{
+    margin-top: 5px;
+}
+
+textarea{
+    width: 90%;
+    height: 220px;
+    border: none;
+    outline: none;
+    resize: none;
+}
+textarea::placeholder {
+    color: #888;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.right{
+    float: right;
+    width: 58%;
+}
+
+.AddButton button{
+    border: none;
+    border-radius: 0 10px;
+    background-color: #9e9081;
+    color: white;
+    padding: 12px 18px;
+    font-size: 100%;
+    cursor: pointer;
+}
+
+.AddButton{
+    margin: 20px 0 10px 85%;
+}
+
+.AddButton button:hover{
+    background-color: #7a6e56;
+}
+
+.AddProduct-error{
+    color: red;
+    margin-top: 10px !important;
+    text-align: center;
+}
+
+.preview-container {
+    display: inline-block;
+    position: relative;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.preview-container img, .preview-container video {
+    display: block;
+}
+.preview-container:first-child {
+    margin-left: 45px; /* Thêm margin-left cho ảnh và video đầu tiên */
+}
+.color-box {
+    display: inline-block;
+    position: relative;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.remove-button {
+    position: absolute;
+    top: 0; /* Sát viền trên */
+    right: 0; /* Sát viền phải */
+    background-color: rgba(0, 0, 0, 0.7); /* Nền đen nhạt */
+    color: white; /* Màu trắng */
+    border: none;
+    border-radius: 3px; /* Góc tròn nhỏ cho nút */
+    cursor: pointer;
+    padding: 2px 5px; /* Kích thước nhỏ hơn */
+}
+.UpColor {
+    display: flex;
+    align-items: center;
+}
+#color-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 35px; /* Thêm margin-left cho hàng dưới */
+    margin-top: 5px;
+}
+.color-input {
+    margin-bottom: 10px; /* Khoảng cách giữa các ô nhập màu */
+    width: 150px; /* Giảm độ rộng của thẻ nhập */
+}

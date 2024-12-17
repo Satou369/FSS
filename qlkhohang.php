@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 }
 
 // Truy vấn sản phẩm với điều kiện lọc và sắp xếp
-$sql = "SELECT * FROM donhang,sanpham where donhang.MaSP=sanpham.MaSP";
+$sql = "SELECT * FROM SanPham";
 $result = $conn->query($sql);
 ?>
 
@@ -28,7 +28,7 @@ $result = $conn->query($sql);
 	  <title>Sowh Fashion</title>
 	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	  <link href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap" rel="stylesheet">
-	  <link rel="stylesheet" href="lsdonhang.css">
+	  <link rel="stylesheet" href="qlkhohang.css">
 	</head>
 	<body>
 
@@ -69,17 +69,20 @@ $result = $conn->query($sql);
 		</header>
 
 		<div style="padding-top: 20px" >
-			<label>Quản lý đơn hàng</label>
+			<label>Quản lý kho hàng</label>
+			<button type="button" onclick="window.location.href='ThemSP.php';">+</button>
 		</div>
 		<div class="thanhngang"></div>
-		<table>
+		<table class= "table">
 			<thead>
 				<tr>
-					<th>Mã đơn hàng</th>
 					<th>Tên sản phẩm</th>
-					<th>Tên người mua</th>
-					<th>Trạng thái</th>
-					<th></th>
+					<th>Hình ảnh</th>
+					<th>Mô tả</th>
+					<th>Giá bán</th>
+					<th>Kích cỡ</th>
+					<th>Số sản phẩm đã bán</th>
+					<th>Số sản phẩm còn lại</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -89,11 +92,13 @@ $result = $conn->query($sql);
 						while($row = $result->fetch_assoc()) {
 							echo'
 							<tr>
-								<td>'. $row["MaDH"] .'</td>
 								<td>'. $row["TenSP"] .'</td>
-								<td>'. $row["TaiKhoan"] .'</td>
-								<td>'. $row["TrangThai"] .'</td>
-								<td><a href="chitietDH.php?id=' . $row["MaDH"] . '"">Xem chi tiết</a></td>
+								<td><img src="' . $row["img"] . '" alt="Product ' . $row["MaSP"] . '"></td>
+								<td>'. $row["MoTa"] .'</td>
+								<td>'. $row["Gia"] .'</td>
+								<td>'. $row["Co"] .'</td>
+								<td>'. $row["SLDaBan"] .'</td>
+								<td>'. $row["SLConLai"] .'</td>
 							</tr>';
 						}
 					} else {
