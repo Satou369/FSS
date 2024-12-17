@@ -24,8 +24,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $sql = "INSERT INTO nhanvien (MaNV, MatKhau, TenNV, CCCD, GT, NamSinh, SDT, Email)
             VALUES ('$MaNV', '$MatKhau', '$name', '$cccd', '$gender', '$birthDate', '$phone', '$email')";
+			
 
     if ($conn->query($sql) === TRUE) {
+        echo "Thêm nhân viên thành công!";
+    } else {
+        echo "Lỗi: " . $sql . "<br>" . $conn->error;
+    }
+	
+	$sql = "INSERT INTO account (username,password, phone, email, loai)
+            VALUES ('$MaNV', '$MatKhau', '$phone', '$email', 'nv')";
+	if ($conn->query($sql) === TRUE) {
         echo "Thêm nhân viên thành công!";
     } else {
         echo "Lỗi: " . $sql . "<br>" . $conn->error;
