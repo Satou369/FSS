@@ -17,12 +17,12 @@
         <br>
         <div class="dt1"></div>
         <ul class="menu">
-            <li><a href="trangchu.php"><i class="fa fa-home" aria-hidden="true"></i>  Trang chủ</a></li>
-            <li><a href="trangchu.php"><i class="fa fa-plus" aria-hidden="true"></i> QL. Nhân viên</a></li>
-            <li><a href="#"><i class="fa fa-plus" aria-hidden="true"></i> QL. Sản phẩm</a></li>
+            <li><a href="trangchuQTV.php"><i class="fa fa-home" aria-hidden="true"></i>  Trang chủ</a></li>
+            <li><a href="trangch.php"><i class="fa fa-plus" aria-hidden="true"></i> QL. Nhân viên</a></li>
+            <li><a href="trangchunhanvien.php"><i class="fa fa-plus" aria-hidden="true"></i> QL. Sản phẩm</a></li>
         </ul>
         <div class="logout">
-            <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Thoát</a>
+            <a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Thoát</a>
         </div>
     </div>
     <div class="main-content">
@@ -64,7 +64,7 @@
                     <p>Năm sinh: <input type="text" class="Namsinh" value="<?php echo $Namsinh; ?>" data-manv="<?php echo $MaNV; ?>" disabled></p>
                     <p>Số điện thoại: <input type="text" class="SDT" value="<?php echo $SDT; ?>" data-manv="<?php echo $MaNV; ?>" disabled></p>
                     <p>Email: <input type="text" class="email" value="<?php echo $email; ?>" data-manv="<?php echo $MaNV; ?>" disabled></p>
-                    <div class="error-message" style="color:red;"></div>
+                    <div class="error-message" style="color:red;"></div> 
                 </div>
                 <div class="edit">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -157,10 +157,9 @@
                         errorMessage.text('Cập nhật nhân viên không thành công. Vui lòng nhập đúng dữ liệu');
                         isValid = false;
                         totalErrors++;
-                        return; 
+                        return; // Dừng kiểm tra nhân viên này và tiếp tục với nhân viên khác
                     }
 
-                    // Nếu tất cả các kiểm tra đều hợp lệ, xóa thông báo lỗi
                     if (errorCount === 0) {
                         errorMessage.text('');
                     }

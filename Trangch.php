@@ -17,12 +17,12 @@
         <br>
         <div class="dt1"></div>
         <ul class="menu">
-            <li><a href="trangchu.php" ><i class="fa fa-home" aria-hidden="true"></i>  Trang chủ</a></li>
+            <li><a href="trangchuQTV.php" ><i class="fa fa-home" aria-hidden="true"></i>  Trang chủ</a></li>
             <li><a href="trangch.php"><i class="fa fa-plus" aria-hidden="true"></i> QL. Nhân viên</a></li>
-            <li><a href="#"><i class="fa fa-plus" aria-hidden="true"></i> QL. Sản phẩm</a></li>
+            <li><a href="trangchunhanvien.php"><i class="fa fa-plus" aria-hidden="true"></i> QL. Sản phẩm</a></li>
         </ul>
         <div class="logout">
-            <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Thoát</a>
+            <a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Thoát</a>
         </div>
     </div>
     <div class="main-content">
