@@ -2,7 +2,7 @@
 session_start(); // Bắt đầu session để kiểm tra đăng nhập
 
 // Kết nối với cơ sở dữ liệu
-$conn = new mysqli('localhost', 'root', '', 'fss2');
+$conn = new mysqli('localhost', 'root', '', 'fss');
 
 // Kiểm tra kết nối
 if ($conn->connect_error) {
