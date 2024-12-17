@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Kiểm tra các trường
     if (empty($_POST['productname']) || empty($_FILES['photo']['name'][0]) || empty($_POST['quantity'])) {
-        $errors[] = "Vui lòng điền đầy đủ thông tin ở các ô: Tên sản phẩm, Hình ảnh, Số lượng.";
+        $errors[] = "Thêm sản phẩm vào kho hàng không thành công. Vui lòng điền đầy đủ thông tin";
     }
 
     // Kiểm tra trường số lượng và giá chỉ chứa ký tự số
