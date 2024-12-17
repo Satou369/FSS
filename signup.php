@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <img src="bg.png" width="100%" height="60%">
+    <img src="img/bg.png" width="100%" height="60%">
     <div class="SignupForm">
         <div class="arrow"><a href="login.php">
             <img src="img/arrow.jpg">
