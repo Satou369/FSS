@@ -1,3 +1,31 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th12 18, 2024 lúc 03:46 AM
+-- Phiên bản máy phục vụ: 10.4.32-MariaDB
+-- Phiên bản PHP: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Cơ sở dữ liệu: `fss`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `account`
+--
 
 CREATE TABLE `account` (
   `username` varchar(255) NOT NULL,
@@ -15,7 +43,8 @@ INSERT INTO `account` (`username`, `password`, `phone`, `email`, `loai`) VALUES
 ('bichtram', '2045', '0123456789', 'bichtram2045@gmail.com', 'nv'),
 ('Allen', '1234', '0234567890', 'df@gmail.com', NULL),
 ('Satou', '123456', '0969959804', 'annguyenduc@gmail.com', NULL),
-('Admin', '1234', '0123456789', 'adjcnds@gmail.com', 'qtv');
+('Admin', '1234', '0123456789', 'adjcnds@gmail.com', 'qtv'),
+('School', '123456', '0123456789', 'truongdien@gmail.com', 'nv');
 
 -- --------------------------------------------------------
 
@@ -297,7 +326,8 @@ INSERT INTO `nhanvien` (`MaNV`, `MatKhau`, `TenNV`, `GT`, `CCCD`, `NamSinh`, `SD
 ('NV007', 'securepass', 'Đặng Thị H', 'Nữ', '890123456789', '1994-03-18', '0916543210', 'dangthih@gmail.com'),
 ('NV008', 'buildit', 'Bùi Minh I', 'Nam', '901234567890', '1989-10-22', '0954321098', 'buiminhi@yahoo.com'),
 ('NV009', 'domainpass', 'Dương Thị K', 'Nữ', '012345678901', '1996-12-30', '0923456789', 'duongthik@domain.com'),
-('NV010', 'securepass', 'Vũ Minh E', 'Nam', '567890123456', '1988-09-30', '0934567890', 'vuminhe@outlook.com');
+('NV010', 'securepass', 'Vũ Minh E', 'Nam', '567890123456', '1988-09-30', '0934567890', 'vuminhe@outlook.com'),
+('School', '123456', 'Trường', 'Nam', '123456789456', '0000-00-00', '0123456789', 'truongdien@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -319,24 +349,28 @@ CREATE TABLE `sanpham` (
   `XL` tinyint(1) DEFAULT NULL,
   `XXL` tinyint(1) DEFAULT NULL,
   `SLDaBan` int(11) DEFAULT NULL,
-  `SLConLai` int(11) DEFAULT NULL
+  `SLConLai` int(11) DEFAULT NULL,
+  `MauSac` varchar(50) DEFAULT '',
+  `Video` text DEFAULT '',
+  `Anh` text DEFAULT '',
+  `SoLuong` int(11) DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `sanpham`
 --
 
-INSERT INTO `sanpham` (`MaSP`, `TenSP`, `MoTa`, `Gia`, `GioiTinh`, `PhanLoai`, `img`, `luotmua`, `S`, `L`, `XL`, `XXL`, `SLDaBan`, `SLConLai`) VALUES
-('SP01', 'Áo thun nam Basic', 'Áo thun nam cổ tròn, thiết kế đơn giản nhưng tinh tế. Chất liệu cotton mềm mại, thấm hút mồ hôi, phù hợp với nhiều phong cách từ đi chơi đến đi làm.', 100000, 'Nam', 'Áo', 'img/SP01.1.jpg', 640, 1, 1, 1, 1, 576, 13),
-('SP02', 'Quần jeans nữ rách gối', 'Quần jeans nữ với thiết kế rách gối thời trang, mang đến phong cách cá tính, năng động. Chất liệu denim co giãn nhẹ, thoải mái trong mọi hoạt động. Lý tưởng cho các buổi đi chơi hay dạo phố.', 150000, 'Nữ', 'Quần', 'img/SP02.1.jpg', 980, 1, 1, 1, 1, 337, 643),
-('SP03', 'Áo khoác dạ nữ dài', 'Áo khoác dạ nữ dài, thiết kế thanh lịch và ấm áp. Chất liệu vải dạ cao cấp giúp giữ nhiệt tốt, phù hợp với những ngày đông lạnh giá. Dễ dàng kết hợp với nhiều loại trang phục.', 100000, 'Nữ', 'Áo Khoác', 'img/SP03.1.jpg', 979, 1, 1, 1, 1, 203, 86),
-('SP04', 'Chân váy xòe midi', 'Chân váy xòe midi với phần chân váy rộng, tạo sự thoải mái khi di chuyển. Thiết kế đơn giản nhưng tinh tế, dễ dàng phối hợp với áo sơ mi hay áo phông. Chất liệu vải mềm mại, dễ chịu.', 100000, 'Nữ', 'Váy', 'img/SP04.1.jpg', 958, 1, 1, 1, 1, 819, 839),
-('SP05', 'Áo sơ mi nam cổ điển', 'Áo sơ mi nam cổ điển, chất liệu vải cotton mát mẻ, thoáng khí, mang đến sự lịch lãm và thoải mái. Phù hợp cho cả môi trường công sở lẫn những buổi tiệc tối sang trọng.', 100000, 'Nam', 'Áo', 'img/SP05.1.jpg', 851, 1, 1, 1, 1, 736, 165),
-('SP06', 'Áo len nữ cổ lọ', 'Áo len nữ cổ lọ dày dặn, giữ ấm tuyệt vời trong mùa đông. Chất liệu len mềm mại, không gây ngứa, thích hợp để mặc cùng quần jeans hoặc váy ngắn. Thiết kế cổ lọ giúp bảo vệ vùng cổ khỏi lạnh.', 200000, 'Nữ', 'Áo Len', 'img/SP06.1.jpg', 881, 1, 1, 1, 1, 614, 574),
-('SP07', 'Quần short nam thể thao', 'Quần short nam thể thao, phù hợp cho các hoạt động thể dục thể thao hoặc đi dạo. Chất liệu vải thoáng khí, co giãn tốt, giúp người mặc dễ dàng vận động. Thiết kế tối giản nhưng năng động.', 250000, 'Nam', 'Quần', 'img/SP07.1.jpg', 853, 1, 1, 1, 1, 27, 414),
-('SP08', 'Áo phông nữ tay lỡ', 'Áo phông nữ tay lỡ với thiết kế hiện đại, trẻ trung. Chất liệu cotton mềm mại, dễ chịu, phù hợp cho các buổi hẹn hò, đi dạo hoặc ở nhà. Có nhiều màu sắc và họa tiết để lựa chọn.', 100000, 'Nữ', 'Áo', 'img/SP08.1.jpg', 625, 1, 1, 1, 1, 988, 696),
-('SP09', 'Váy đầm suông dáng dài', 'Váy đầm suông dáng dài nữ tính, phù hợp cho những buổi dạo phố hoặc đi tiệc. Chất liệu vải nhẹ, thoáng khí, tạo cảm giác thoải mái cho người mặc. Phù hợp với nhiều dáng người.', 300000, 'Nữ', 'Váy', 'img/SP09.1.jpg', 564, 1, 1, 1, 1, 517, 496),
-('SP10', 'Áo khoác da nam', 'Áo khoác da nam sang trọng, thời trang, chất liệu da cao cấp. Thiết kế mạnh mẽ và nam tính, phù hợp với phong cách cá nhân nổi bật.', 120000, 'Nam', 'Áo Khoác', 'img/SP10.1.jpg', 945, 1, 1, 1, 1, 928, 150);
+INSERT INTO `sanpham` (`MaSP`, `TenSP`, `MoTa`, `Gia`, `GioiTinh`, `PhanLoai`, `img`, `luotmua`, `S`, `L`, `XL`, `XXL`, `SLDaBan`, `SLConLai`, `MauSac`, `Video`, `Anh`, `SoLuong`) VALUES
+('SP01', 'Áo thun nam Basic', 'Áo thun nam cổ tròn, thiết kế đơn giản nhưng tinh tế. Chất liệu cotton mềm mại, thấm hút mồ hôi, phù hợp với nhiều phong cách từ đi chơi đến đi làm.', 100000, 'Nam', 'Áo', 'img/SP01.1.jpg', 640, 1, 1, 1, 1, 576, 13, '', '', '', 0),
+('SP02', 'Quần jeans nữ rách gối', 'Quần jeans nữ với thiết kế rách gối thời trang, mang đến phong cách cá tính, năng động. Chất liệu denim co giãn nhẹ, thoải mái trong mọi hoạt động. Lý tưởng cho các buổi đi chơi hay dạo phố.', 150000, 'Nữ', 'Quần', 'img/SP02.1.jpg', 980, 1, 1, 1, 1, 337, 643, '', '', '', 0),
+('SP03', 'Áo khoác dạ nữ dài', 'Áo khoác dạ nữ dài, thiết kế thanh lịch và ấm áp. Chất liệu vải dạ cao cấp giúp giữ nhiệt tốt, phù hợp với những ngày đông lạnh giá. Dễ dàng kết hợp với nhiều loại trang phục.', 100000, 'Nữ', 'Áo Khoác', 'img/SP03.1.jpg', 979, 1, 1, 1, 1, 203, 86, '', '', '', 0),
+('SP04', 'Chân váy xòe midi', 'Chân váy xòe midi với phần chân váy rộng, tạo sự thoải mái khi di chuyển. Thiết kế đơn giản nhưng tinh tế, dễ dàng phối hợp với áo sơ mi hay áo phông. Chất liệu vải mềm mại, dễ chịu.', 100000, 'Nữ', 'Váy', 'img/SP04.1.jpg', 958, 1, 1, 1, 1, 819, 839, '', '', '', 0),
+('SP05', 'Áo sơ mi nam cổ điển', 'Áo sơ mi nam cổ điển, chất liệu vải cotton mát mẻ, thoáng khí, mang đến sự lịch lãm và thoải mái. Phù hợp cho cả môi trường công sở lẫn những buổi tiệc tối sang trọng.', 100000, 'Nam', 'Áo', 'img/SP05.1.jpg', 851, 1, 1, 1, 1, 736, 165, '', '', '', 0),
+('SP06', 'Áo len nữ cổ lọ', 'Áo len nữ cổ lọ dày dặn, giữ ấm tuyệt vời trong mùa đông. Chất liệu len mềm mại, không gây ngứa, thích hợp để mặc cùng quần jeans hoặc váy ngắn. Thiết kế cổ lọ giúp bảo vệ vùng cổ khỏi lạnh.', 200000, 'Nữ', 'Áo Len', 'img/SP06.1.jpg', 881, 1, 1, 1, 1, 614, 574, '', '', '', 0),
+('SP07', 'Quần short nam thể thao', 'Quần short nam thể thao, phù hợp cho các hoạt động thể dục thể thao hoặc đi dạo. Chất liệu vải thoáng khí, co giãn tốt, giúp người mặc dễ dàng vận động. Thiết kế tối giản nhưng năng động.', 250000, 'Nam', 'Quần', 'img/SP07.1.jpg', 853, 1, 1, 1, 1, 27, 414, '', '', '', 0),
+('SP08', 'Áo phông nữ tay lỡ', 'Áo phông nữ tay lỡ với thiết kế hiện đại, trẻ trung. Chất liệu cotton mềm mại, dễ chịu, phù hợp cho các buổi hẹn hò, đi dạo hoặc ở nhà. Có nhiều màu sắc và họa tiết để lựa chọn.', 100000, 'Nữ', 'Áo', 'img/SP08.1.jpg', 625, 1, 1, 1, 1, 988, 696, '', '', '', 0),
+('SP09', 'Váy đầm suông dáng dài', 'Váy đầm suông dáng dài nữ tính, phù hợp cho những buổi dạo phố hoặc đi tiệc. Chất liệu vải nhẹ, thoáng khí, tạo cảm giác thoải mái cho người mặc. Phù hợp với nhiều dáng người.', 300000, 'Nữ', 'Váy', 'img/SP09.1.jpg', 564, 1, 1, 1, 1, 517, 496, '', '', '', 0),
+('SP10', 'Áo khoác da nam', 'Áo khoác da nam sang trọng, thời trang, chất liệu da cao cấp. Thiết kế mạnh mẽ và nam tính, phù hợp với phong cách cá nhân nổi bật.', 120000, 'Nam', 'Áo Khoác', 'img/SP10.1.jpg', 945, 1, 1, 1, 1, 928, 150, '', '', '', 0);
 
 --
 -- Bẫy `sanpham`
@@ -480,3 +514,7 @@ ALTER TABLE `thanhtoan`
 ALTER TABLE `xuly`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
