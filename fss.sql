@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 18, 2024 lúc 06:39 AM
+-- Thời gian đã tạo: Th12 18, 2024 lúc 11:14 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -44,17 +44,6 @@ INSERT INTO `account` (`username`, `password`, `phone`, `email`, `loai`) VALUES
 ('Allen', '1234', '0234567890', 'df@gmail.com', NULL),
 ('Satou', '123456', '0969959804', 'annguyenduc@gmail.com', NULL),
 ('Admin', '1234', '0123456789', 'adjcnds@gmail.com', 'qtv'),
-('School', '123456', '0123456789', 'truongdien@gmail.com', 'nv'),
-('NV001', 'password123', '0987654321', 'nguyenvana@gmail.com', 'nv'),
-('NV002', 'securepass', '0912345678', 'tranthib@yahoo.com', 'nv'),
-('NV003', 'wonderland', '0901234567', 'leminhc@gmail.com', 'nv'),
-('NV004', 'buildit', '0976543210', 'phanthid@hotmail.com', 'nv'),
-('NV005', 'domainpass', '0945678901', 'ngothif@domain.com', 'nv'),
-('NV006', 'buildit', '0961234567', 'hoangvang@mail.com', 'nv'),
-('NV007', 'securepass', '0916543210', 'dangthih@gmail.com', 'nv'),
-('NV008', 'buildit', '0954321098', 'buiminhi@yahoo.com', 'nv'),
-('NV009', 'domainpass', '0923456789', 'duongthik@domain.com', 'nv'),
-('NV010', 'securepass', '0934567890', 'vuminhe@outlook.com', 'nv'),
 ('School', '123456', '0123456789', 'truongdien@gmail.com', 'nv');
 
 -- --------------------------------------------------------
@@ -218,7 +207,9 @@ INSERT INTO `giohang` (`id`, `TenDangNhap`, `MaSP`, `TenSP`, `HinhAnh`, `Mau`, `
 (25, 'WILFRED', 'SP03', 'Áo khoác dạ nữ dài', 'image/SP03.1.jpg', 'Hồng', 'XXL', 3, 100000.00),
 (13, 'Satou', 'SP10', 'Áo khoác da nam', 'image/SP10.1.jpg', 'Nâu', 'XXL', 50, 120000.00),
 (14, 'SATOU', 'SP06', 'Áo len nữ cổ lọ', 'image/SP06.1.jpg', 'Đỏ', 'XL', 3, 200000.00),
-(15, 'Satou', 'SP10', 'Áo khoác da nam', 'image/SP10.1.jpg', 'Nâu', 'S', 4, 120000.00);
+(15, 'Satou', 'SP10', 'Áo khoác da nam', 'image/SP10.1.jpg', 'Nâu', 'S', 4, 120000.00),
+(33, 'Satou', 'SP08', 'Áo phông nữ tay lỡ', 'img/SP08.1.jpg', 'Vàng', 'L', 0, 100000.00),
+(34, 'Satou', 'SP09', 'Váy đầm suông dáng dài', 'img/SP09.1.jpg', 'Nâu', 'L', 0, 300000.00);
 
 -- --------------------------------------------------------
 
@@ -453,14 +444,15 @@ CREATE TABLE `xuly` (
 --
 
 INSERT INTO `xuly` (`ID`, `TenDangNhap`, `MaSP`, `TenSP`, `HinhAnh`, `Mau`, `Size`, `SoLuong`, `Gia`, `TrangThai`, `NgayTao`) VALUES
-(49, 'WILFRED', 'SP03', 'Áo khoác dạ nữ dài', 'http://localhost/FSS/img/SP03.1.jpg', NULL, 'XXL', 3, 100000, 'Chưa xác nhận', '2024-12-16 19:54:28'),
-(50, 'WILFRED', 'SP08', 'Áo phông nữ tay lỡ', 'http://localhost/FSS/img/SP08.1.jpg', NULL, 'L', 3, 100000, 'Chưa xác nhận', '2024-12-16 19:55:44'),
-(51, 'Satou', 'SP10', 'Áo khoác da nam', 'http://localhost/FSS/img/SP10.1.jpg', NULL, 'XXL', 50, 120000, 'Chưa xác nhận', '2024-12-17 02:32:33'),
-(52, 'Satou', 'SP06', 'Áo len nữ cổ lọ', 'http://localhost/FSS/img/SP06.1.jpg', NULL, 'XL', 3, 200000, 'Chưa xác nhận', '2024-12-17 02:32:33'),
-(53, 'Satou', 'SP10', 'Áo khoác da nam', 'http://localhost/FSS/img/SP10.1.jpg', NULL, 'XXL', 50, 120000, 'Chưa xác nhận', '2024-12-17 02:41:06'),
-(48, 'WILFRED', 'SP06', 'Áo len nữ cổ lọ', 'http://localhost/FSS/img/SP06.1.jpg', NULL, 'L', 0, 200000, 'Chưa xác nhận', '2024-12-16 19:53:30'),
-(46, 'WILFRED', 'SP08', 'Áo phông nữ tay lỡ', 'http://localhost/FSS/img/SP08.1.jpg', NULL, 'L', 3, 100000, 'Chưa xác nhận', '2024-12-16 19:39:25'),
-(47, 'WILFRED', 'SP07', 'Quần short nam thể thao', 'http://localhost/FSS/img/SP07.1.jpg', NULL, 'XXL', 2, 250000, 'Chưa xác nhận', '2024-12-16 19:39:25');
+(49, 'WILFRED', 'SP03', 'Áo khoác dạ nữ dài', 'img/SP03.1.jpg', NULL, 'XXL', 3, 100000, 'Chưa xác nhận', '2024-12-16 19:54:28'),
+(50, 'WILFRED', 'SP08', 'Áo phông nữ tay lỡ', 'img/SP08.1.jpg', NULL, 'L', 3, 100000, 'Chưa xác nhận', '2024-12-16 19:55:44'),
+(51, 'Satou', 'SP10', 'Áo khoác da nam', 'img/SP10.1.jpg', NULL, 'XXL', 50, 120000, 'Chưa xác nhận', '2024-12-17 02:32:33'),
+(52, 'Satou', 'SP06', 'Áo len nữ cổ lọ', 'img/SP06.1.jpg', NULL, 'XL', 3, 200000, 'Chưa xác nhận', '2024-12-17 02:32:33'),
+(53, 'Satou', 'SP10', 'Áo khoác da nam', 'img/SP10.1.jpg', NULL, 'XXL', 50, 120000, 'Chưa xác nhận', '2024-12-17 02:41:06'),
+(48, 'WILFRED', 'SP06', 'Áo len nữ cổ lọ', 'img/SP06.1.jpg', NULL, 'L', 0, 200000, 'Chưa xác nhận', '2024-12-16 19:53:30'),
+(46, 'WILFRED', 'SP08', 'Áo phông nữ tay lỡ', 'img/SP08.1.jpg', NULL, 'L', 3, 100000, 'Chưa xác nhận', '2024-12-16 19:39:25'),
+(47, 'WILFRED', 'SP07', 'Quần short nam thể thao', 'img/SP07.1.jpg', NULL, 'XXL', 2, 250000, 'Chưa xác nhận', '2024-12-16 19:39:25'),
+(54, 'Allen', NULL, 'Áo khoác dạ nữ dài', 'img/SP03.1.jpg', NULL, 'XXL', 3, 100000, 'Chưa xác nhận', '2024-12-18 05:29:17');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -511,7 +503,7 @@ ALTER TABLE `donhang2`
 -- AUTO_INCREMENT cho bảng `giohang`
 --
 ALTER TABLE `giohang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT cho bảng `thanhtoan`
@@ -523,7 +515,7 @@ ALTER TABLE `thanhtoan`
 -- AUTO_INCREMENT cho bảng `xuly`
 --
 ALTER TABLE `xuly`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
