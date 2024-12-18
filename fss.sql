@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 18, 2024 lúc 11:14 AM
+-- Thời gian đã tạo: Th12 18, 2024 lúc 11:32 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -198,16 +198,16 @@ CREATE TABLE `giohang` (
 --
 
 INSERT INTO `giohang` (`id`, `TenDangNhap`, `MaSP`, `TenSP`, `HinhAnh`, `Mau`, `Size`, `SoLuong`, `Gia`) VALUES
-(27, 'WILFRED', 'SP08', 'Áo phông nữ tay lỡ', 'image/SP08.1.jpg', 'Hồng', 'L', 3, 100000.00),
-(31, 'Allen', 'SP03', 'Áo khoác dạ nữ dài', 'image/SP03.1.jpg', 'Vàng', 'XXL', 3, 100000.00),
-(32, 'Allen', 'SP08', 'Áo phông nữ tay lỡ', 'image/SP08.1.jpg', 'Vàng', 'XL', 2, 100000.00),
-(26, 'WILFRED', 'SP07', 'Quần short nam thể thao', 'image/SP07.1.jpg', 'Xám', 'XXL', 2, 250000.00),
-(30, 'WILFRED', 'SP03', 'Áo khoác dạ nữ dài', 'image/SP03.1.jpg', 'Hồng', 'XL', 3, 100000.00),
-(29, 'WILFRED', 'SP03', 'Áo khoác dạ nữ dài', 'image/SP03.1.jpg', 'Trắng', 'XL', 2, 100000.00),
-(25, 'WILFRED', 'SP03', 'Áo khoác dạ nữ dài', 'image/SP03.1.jpg', 'Hồng', 'XXL', 3, 100000.00),
-(13, 'Satou', 'SP10', 'Áo khoác da nam', 'image/SP10.1.jpg', 'Nâu', 'XXL', 50, 120000.00),
-(14, 'SATOU', 'SP06', 'Áo len nữ cổ lọ', 'image/SP06.1.jpg', 'Đỏ', 'XL', 3, 200000.00),
-(15, 'Satou', 'SP10', 'Áo khoác da nam', 'image/SP10.1.jpg', 'Nâu', 'S', 4, 120000.00),
+(27, 'WILFRED', 'SP08', 'Áo phông nữ tay lỡ', 'img/SP08.1.jpg', 'Hồng', 'L', 3, 100000.00),
+(31, 'Allen', 'SP03', 'Áo khoác dạ nữ dài', 'img/SP03.1.jpg', 'Vàng', 'XXL', 3, 100000.00),
+(32, 'Allen', 'SP08', 'Áo phông nữ tay lỡ', 'img/SP08.1.jpg', 'Vàng', 'XL', 2, 100000.00),
+(26, 'WILFRED', 'SP07', 'Quần short nam thể thao', 'img/SP07.1.jpg', 'Xám', 'XXL', 2, 250000.00),
+(30, 'WILFRED', 'SP03', 'Áo khoác dạ nữ dài', 'img/SP03.1.jpg', 'Hồng', 'XL', 3, 100000.00),
+(29, 'WILFRED', 'SP03', 'Áo khoác dạ nữ dài', 'img/SP03.1.jpg', 'Trắng', 'XL', 2, 100000.00),
+(25, 'WILFRED', 'SP03', 'Áo khoác dạ nữ dài', 'img/SP03.1.jpg', 'Hồng', 'XXL', 3, 100000.00),
+(13, 'Satou', 'SP10', 'Áo khoác da nam', 'img/SP10.1.jpg', 'Nâu', 'XXL', 50, 120000.00),
+(14, 'SATOU', 'SP06', 'Áo len nữ cổ lọ', 'img/SP06.1.jpg', 'Đỏ', 'XL', 3, 200000.00),
+(15, 'Satou', 'SP10', 'Áo khoác da nam', 'img/SP10.1.jpg', 'Nâu', 'S', 4, 120000.00),
 (33, 'Satou', 'SP08', 'Áo phông nữ tay lỡ', 'img/SP08.1.jpg', 'Vàng', 'L', 0, 100000.00),
 (34, 'Satou', 'SP09', 'Váy đầm suông dáng dài', 'img/SP09.1.jpg', 'Nâu', 'L', 0, 300000.00);
 
