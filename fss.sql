@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 18, 2024 lúc 03:46 AM
+-- Thời gian đã tạo: Th12 18, 2024 lúc 06:39 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -44,6 +44,17 @@ INSERT INTO `account` (`username`, `password`, `phone`, `email`, `loai`) VALUES
 ('Allen', '1234', '0234567890', 'df@gmail.com', NULL),
 ('Satou', '123456', '0969959804', 'annguyenduc@gmail.com', NULL),
 ('Admin', '1234', '0123456789', 'adjcnds@gmail.com', 'qtv'),
+('School', '123456', '0123456789', 'truongdien@gmail.com', 'nv'),
+('NV001', 'password123', '0987654321', 'nguyenvana@gmail.com', 'nv'),
+('NV002', 'securepass', '0912345678', 'tranthib@yahoo.com', 'nv'),
+('NV003', 'wonderland', '0901234567', 'leminhc@gmail.com', 'nv'),
+('NV004', 'buildit', '0976543210', 'phanthid@hotmail.com', 'nv'),
+('NV005', 'domainpass', '0945678901', 'ngothif@domain.com', 'nv'),
+('NV006', 'buildit', '0961234567', 'hoangvang@mail.com', 'nv'),
+('NV007', 'securepass', '0916543210', 'dangthih@gmail.com', 'nv'),
+('NV008', 'buildit', '0954321098', 'buiminhi@yahoo.com', 'nv'),
+('NV009', 'domainpass', '0923456789', 'duongthik@domain.com', 'nv'),
+('NV010', 'securepass', '0934567890', 'vuminhe@outlook.com', 'nv'),
 ('School', '123456', '0123456789', 'truongdien@gmail.com', 'nv');
 
 -- --------------------------------------------------------
@@ -442,14 +453,14 @@ CREATE TABLE `xuly` (
 --
 
 INSERT INTO `xuly` (`ID`, `TenDangNhap`, `MaSP`, `TenSP`, `HinhAnh`, `Mau`, `Size`, `SoLuong`, `Gia`, `TrangThai`, `NgayTao`) VALUES
-(49, 'WILFRED', 'SP03', 'Áo khoác dạ nữ dài', 'http://localhost/FSS/image/SP03.1.jpg', NULL, 'XXL', 3, 100000, 'Chưa xác nhận', '2024-12-16 19:54:28'),
-(50, 'WILFRED', 'SP08', 'Áo phông nữ tay lỡ', 'http://localhost/FSS/image/SP08.1.jpg', NULL, 'L', 3, 100000, 'Chưa xác nhận', '2024-12-16 19:55:44'),
-(51, 'Satou', 'SP10', 'Áo khoác da nam', 'http://localhost/FSS/image/SP10.1.jpg', NULL, 'XXL', 50, 120000, 'Chưa xác nhận', '2024-12-17 02:32:33'),
-(52, 'Satou', 'SP06', 'Áo len nữ cổ lọ', 'http://localhost/FSS/image/SP06.1.jpg', NULL, 'XL', 3, 200000, 'Chưa xác nhận', '2024-12-17 02:32:33'),
-(53, 'Satou', 'SP10', 'Áo khoác da nam', 'http://localhost/FSS/image/SP10.1.jpg', NULL, 'XXL', 50, 120000, 'Chưa xác nhận', '2024-12-17 02:41:06'),
-(48, 'WILFRED', 'SP06', 'Áo len nữ cổ lọ', 'http://localhost/FSS/image/SP06.1.jpg', NULL, 'L', 0, 200000, 'Chưa xác nhận', '2024-12-16 19:53:30'),
-(46, 'WILFRED', 'SP08', 'Áo phông nữ tay lỡ', 'http://localhost/FSS/image/SP08.1.jpg', NULL, 'L', 3, 100000, 'Chưa xác nhận', '2024-12-16 19:39:25'),
-(47, 'WILFRED', 'SP07', 'Quần short nam thể thao', 'http://localhost/FSS/image/SP07.1.jpg', NULL, 'XXL', 2, 250000, 'Chưa xác nhận', '2024-12-16 19:39:25');
+(49, 'WILFRED', 'SP03', 'Áo khoác dạ nữ dài', 'http://localhost/FSS/img/SP03.1.jpg', NULL, 'XXL', 3, 100000, 'Chưa xác nhận', '2024-12-16 19:54:28'),
+(50, 'WILFRED', 'SP08', 'Áo phông nữ tay lỡ', 'http://localhost/FSS/img/SP08.1.jpg', NULL, 'L', 3, 100000, 'Chưa xác nhận', '2024-12-16 19:55:44'),
+(51, 'Satou', 'SP10', 'Áo khoác da nam', 'http://localhost/FSS/img/SP10.1.jpg', NULL, 'XXL', 50, 120000, 'Chưa xác nhận', '2024-12-17 02:32:33'),
+(52, 'Satou', 'SP06', 'Áo len nữ cổ lọ', 'http://localhost/FSS/img/SP06.1.jpg', NULL, 'XL', 3, 200000, 'Chưa xác nhận', '2024-12-17 02:32:33'),
+(53, 'Satou', 'SP10', 'Áo khoác da nam', 'http://localhost/FSS/img/SP10.1.jpg', NULL, 'XXL', 50, 120000, 'Chưa xác nhận', '2024-12-17 02:41:06'),
+(48, 'WILFRED', 'SP06', 'Áo len nữ cổ lọ', 'http://localhost/FSS/img/SP06.1.jpg', NULL, 'L', 0, 200000, 'Chưa xác nhận', '2024-12-16 19:53:30'),
+(46, 'WILFRED', 'SP08', 'Áo phông nữ tay lỡ', 'http://localhost/FSS/img/SP08.1.jpg', NULL, 'L', 3, 100000, 'Chưa xác nhận', '2024-12-16 19:39:25'),
+(47, 'WILFRED', 'SP07', 'Quần short nam thể thao', 'http://localhost/FSS/img/SP07.1.jpg', NULL, 'XXL', 2, 250000, 'Chưa xác nhận', '2024-12-16 19:39:25');
 
 --
 -- Chỉ mục cho các bảng đã đổ
